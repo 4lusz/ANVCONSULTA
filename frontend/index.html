@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>ANVISA-MONITOR | Admin</title>
+
+  <style>
+    body {
+      background: #0f1117;
+      color: #e6e6e6;
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    h1 { margin-bottom: 5px; }
+
+    .subtitle {
+      color: #9aa4b2;
+      margin-bottom: 30px;
+    }
+
+    /* ===== TOPO ===== */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logout-btn {
+      padding: 8px 14px;
+      background: transparent;
+      border: 1px solid #ff6b6b;
+      color: #ff6b6b;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .logout-btn:hover {
+      background: #ff6b6b;
+      color: #000;
+    }
+
+    .card {
+      background: #161a23;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    button {
+      padding: 10px 18px;
+      margin-right: 10px;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-start { background: #2ecc71; color: #000; }
+    .btn-stop { background: #e74c3c; color: #000; }
+
+    .status-row { margin-bottom: 8px; }
+
+    .label {
+      color: #9aa4b2;
+      display: inline-block;
+      width: 150px;
+    }
+
+    .value { font-weight: bold; }
+
+    .error {
+      color: #ff6b6b;
+      white-space: pre-wrap;
+      margin-top: 5px;
+    }
+
+    .placeholder {
+      color: #777;
+      font-style: italic;
+    }
+
+    .cliente-item {
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      background: #1c2230;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cliente-item.selecionado {
+      border: 2px solid #6c8cff;
+      background: #202a40;
+    }
+
+    .cliente-nome {
+      font-weight: bold;
+    }
+
+    .cliente-inativo {
+      opacity: 0.5;
+    }
+
+    .keyword-item {
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      background: #1c2230;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .keyword-text {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== TOPO COM LOGOUT ===== -->
+<div class="top-bar">
+  <div>
+    <h1>ANVISA-MONITOR</h1>
+    <div class="subtitle">Painel administrativo</div>
+  </div>
+
+  <button class="logout-btn" onclick="logout()">Sair</button>
+</div>
+
+<div class="card">
+  <h2>Monitor</h2>
+  <button class="btn-start" onclick="start()">Start</button>
+  <button class="btn-stop" onclick="stop()">Stop</button>
+</div>
+
+<div class="card">
+  <h2>Status</h2>
+
+  <div class="status-row"><span class="label">Estado:</span> <span id="status-running">--</span></div>
+  <div class="status-row"><span class="label">Ultimo ciclo:</span> <span id="status-cycle">--</span></div>
+  <div class="status-row"><span class="label">Ultimo sucesso:</span> <span id="status-success">--</span></div>
+  <div class="status-row"><span class="label">Tentativas:</span> <span id="status-retry">--</span></div>
+
+  <div class="status-row">
+    <span class="label">Ultimo erro:</span>
+    <div id="status-error" class="error placeholder">Nenhum</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Manutenção</h2>
+
+  <div class="status-row">
+    <span class="label">Estado:</span>
+    <span id="maintenance-status" class="value">--</span>
+  </div>
+
+  <button id="btn-maintenance" onclick="toggleMaintenance()">--</button>
+</div>
+
+<div class="card">
+  <h2>Intervalo do monitor</h2>
+
+  <div style="margin-bottom:8px;">
+    <span class="label">Intervalo atual:</span>
+    <span id="loop-atual" class="value">--</span> minutos
+  </div>
+
+  <input id="loop-input" type="number" min="1" placeholder="Minutos" style="padding:8px; width:120px;">
+  <button onclick="salvarLoop()">Salvar</button>
+</div>
+
+<div class="card">
+  <h2>Clientes</h2>
+
+  <input id="clienteNome" placeholder="Nome do cliente">
+  <input id="clienteEmail" placeholder="Email de login">
+  <input id="clienteSenha" placeholder="Senha temporária">
+  <button onclick="criarCliente()">Adicionar</button>
+
+  <ul id="cliente-list" style="list-style:none; padding-left:0;"></ul>
+</div>
+
+<div class="card">
+  <h2>Keywords do cliente selecionado</h2>
+
+  <input id="kw-expressao" placeholder="Ex: medicamento importacao" style="padding:8px; width:260px;">
+  <select id="kw-operador" style="padding:8px;">
+    <option value="OR">OR</option>
+    <option value="AND">AND</option>
+  </select>
+  <input id="kw-hora-inicio" type="time" value="00:00" style="padding:8px;">
+  <input id="kw-hora-fim" type="time" value="23:59" style="padding:8px;">
+  <button id="btn-keyword" onclick="salvarKeyword()">Adicionar</button>
+
+  <ul id="keyword-list" style="list-style:none; padding-left:0;"></ul>
+</div>
+
+<div class="card">
+  <h2>Emails</h2>
+
+  <div style="margin-bottom:6px;">
+    <span class="label">Cliente selecionado:</span>
+    <span id="cliente-selecionado" class="value placeholder">Nenhum</span>
+  </div>
+
+  <input id="email-input" placeholder="email@exemplo.com" style="padding:8px; width:260px;" disabled>
+  <button id="btn-add-email" onclick="addEmail()" disabled>Adicionar</button>
+
+  <div id="email-hint" class="placeholder">
+    Selecione um cliente para gerenciar emails.
+  </div>
+
+  <ul id="email-list" style="list-style:none; padding-left:0;"></ul>
+</div>
+
+<script src="app.js"></script>
+<script>
+  function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    window.location.href = "login.html";
+  }
+</script>
+
+</body>
+</html>

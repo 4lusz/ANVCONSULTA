@@ -1,0 +1,6 @@
+● anvconsulta-motor.service - AnvConsulta Motor
+     Loaded: loaded (]8;;file://srv1220990/etc/systemd/system/anvconsulta-motor.service/etc/systemd/system/anvconsulta-motor.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: activating (auto-restart) since Fri 2025-12-26 06:08:33 -03; 689ms ago
+    Process: 40870 ExecStart=/opt/anvconsulta/anvisa-monitor/venv/bin/python /opt/anvconsulta/anvisa-monitor/main.py (code=exited, status=0/SUCCESS)
+   Main PID: 40870 (code=exited, status=0/SUCCESS)
+        CPU: 3.791s

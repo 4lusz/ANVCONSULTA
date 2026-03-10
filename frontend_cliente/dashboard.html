@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>AnvConsulta | Painel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ===== TOPO ===== -->
+    <div class="top-bar">
+      <div class="logo">AnvConsulta</div>
+
+      <div class="user-area">
+        <span id="cliente-logado" class="cliente-logado">--</span>
+        <button class="logout-btn" onclick="logout()">Sair</button>
+      </div>
+    </div>
+
+    <!-- ===== MENU ===== -->
+    <div class="menu">
+      <button data-tab="emails" class="active" onclick="selectTab(this)">
+        Emails
+      </button>
+
+      <button data-tab="keywords" onclick="selectTab(this)">
+        Keywords
+      </button>
+
+      <button data-tab="alertas" onclick="selectTab(this)">
+        Alertas
+      </button>
+    </div>
+
+    <!-- ===== CONTEÚDO ===== -->
+    <div class="content" id="content">
+      <div class="placeholder">
+        Selecione uma opção acima
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="/client/js/dashboard.js?v=3"></script>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>

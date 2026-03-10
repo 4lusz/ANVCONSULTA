@@ -1,0 +1,20 @@
+[0;1;32m●[0m anvconsulta.service - ANVCONSULTA Monitor
+     Loaded: loaded (]8;;file://srv1220990/etc/systemd/system/anvconsulta.service/etc/systemd/system/anvconsulta.service]8;;; [0;1;38;5;185mdisabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Sun 2025-12-28 17:42:40 -03; 5min ago
+   Main PID: 164661 (uvicorn)
+      Tasks: 3 (limit: 4652)
+     Memory: 101.2M (peak: 648.0M)
+        CPU: 49.599s
+     CGroup: /system.slice/anvconsulta.service
+             └─[0;38;5;245m164661 /opt/anvconsulta/anvisa-monitor/venv/bin/python3 /opt/anvconsulta/anvisa-monitor/venv/bin/uvicorn backend.app:app --host 0.0.0.0 --port 8000[0m
+
+Dec 28 17:47:24 srv1220990 uvicorn[164661]: [WARN] Texto vazio ou ato ignorado
+Dec 28 17:47:32 srv1220990 uvicorn[164661]: ==============================
+Dec 28 17:47:32 srv1220990 uvicorn[164661]: [PROCESS] Ato 20/20
+Dec 28 17:47:32 srv1220990 uvicorn[164661]: [LINK] https://www.in.gov.br/web/dou/-/resolucao-n-1.006-de-17-de-dezembro-de-2025-676935911
+Dec 28 17:47:32 srv1220990 uvicorn[164661]: [INFO] Abrindo ato: https://www.in.gov.br/web/dou/-/resolucao-n-1.006-de-17-de-dezembro-de-2025-676935911
+Dec 28 17:47:33 srv1220990 uvicorn[164661]: [SKIP] Ato não é do dia atual
+Dec 28 17:47:33 srv1220990 uvicorn[164661]: [WARN] Texto vazio ou ato ignorado
+Dec 28 17:47:40 srv1220990 uvicorn[164661]: [END] Ciclo finalizado
+Dec 28 17:47:40 srv1220990 uvicorn[164661]: [WAIT] Dormindo 900 segundos...
+Dec 28 17:47:48 srv1220990 uvicorn[164661]: INFO:     177.96.160.194:49494 - "GET /admin/status HTTP/1.1" 200 OK

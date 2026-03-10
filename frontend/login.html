@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>AnvConsulta | Admin Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #0d1b3d, #020617);
+      font-family: Arial, sans-serif;
+    }
+
+    .login-box {
+      width: 340px;
+      padding: 32px;
+      background: rgba(10, 20, 60, 0.6);
+      border: 1px solid #3b5bff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      margin-bottom: 22px;
+      color: #6c8cff;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin-bottom: 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid #3b5bff;
+      border-radius: 6px;
+      color: #fff;
+      text-align: left;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      background: transparent;
+      border: 1px solid #6c8cff;
+      border-radius: 6px;
+      color: #6c8cff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6c8cff;
+      color: #020617;
+    }
+
+    .logout-btn {
+      margin-top: 14px;
+      border-color: #ff6c6c;
+      color: #ff6c6c;
+    }
+
+    .logout-btn:hover {
+      background: #ff6c6c;
+      color: #020617;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h2>Admin</h2>
+
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="senha" placeholder="Senha">
+
+    <button onclick="loginAdmin()">Entrar</button>
+ </div>
+
+    <script src="./admin_login.js"></script> </body>
+   </body>   
+   </html>

@@ -1,0 +1,14 @@
+{
+  "cliente_id": 2,
+  "cliente_nome": "Duda",
+  "emails": [
+    "smbyettv@gmail.com",
+    "byebyenb1@gmail.com"
+  ],
+  "termos": [
+    "medicamentos",
+    "importação paralela"
+  ],
+  "tipo": "OR",
+  "ativo": true
+}

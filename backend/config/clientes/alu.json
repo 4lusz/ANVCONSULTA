@@ -1,0 +1,13 @@
+{
+  "cliente_id": 1,
+  "cliente_nome": "Alu",
+  "ativo": true,
+  "emails": [
+    "dr0pz1102@gmail.com",
+    "aluisiomprado@gmail.com"
+  ],
+  "termos": ["importação"],
+  "tipo": "OR",
+  "horario_inicio": "08:00",
+  "horario_fim": "18:00"
+}

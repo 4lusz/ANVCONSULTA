@@ -1,0 +1,280 @@
+:root {
+  --green: #1eea72;
+  --green-dark: #14c862;
+
+  --bg-main: #f7f9fb;
+  --bg-card: #ffffff;
+
+  --text-main: #0f172a;
+  --text-muted: #6b7280;
+
+  --border-soft: #e5e7eb;
+  --shadow-soft: 0 14px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== BASE ===== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* ===== CONTAINER ===== */
+
+.container {
+  max-width: 840px;
+  margin: 60px auto;
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 44px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ===== TOPO ===== */
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 38px;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.user-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cliente-logado {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ===== LOGOUT ===== */
+
+.logout-btn {
+  background: transparent;
+  border: 2px solid #ef4444;
+  color: #ef4444;
+  padding: 7px 18px;
+  font-size: 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* ===== MENU ===== */
+
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 44px;
+}
+
+.menu button {
+  padding: 11px 26px;
+  border-radius: 999px;
+  border: 2px solid var(--green);
+  background: transparent;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu button:hover {
+  background: rgba(30, 234, 114, 0.12);
+}
+
+.menu button.active {
+  background: var(--green);
+  color: #ffffff;
+}
+
+/* ===== CONTENT ===== */
+
+.content {
+  max-width: 580px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* ===== INPUTS (LOGIN + PAINEL) ===== */
+
+input {
+  width: 100%;
+  max-width: 360px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  font-size: 14px;
+  margin: 0 auto;
+  display: block;
+  background: #ffffff;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+/* ===== FORM ===== */
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 34px;
+  align-items: center;
+}
+
+/* ===== BOTÕES ===== */
+
+button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 2px solid var(--green);
+  background: transparent;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+button:hover {
+  background: var(--green);
+  color: #ffffff;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green);
+}
+
+.btn-primary:hover {
+  background: var(--green-dark);
+}
+
+.btn-danger {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.btn-danger:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+/* ===== LISTAS ===== */
+
+.email-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  margin-bottom: 16px;
+  gap: 18px;
+  background: #ffffff;
+}
+
+.email-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.email {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.status {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* ===== ALERTAS ===== */
+
+.alert-card {
+  background: #ffffff;
+  border-left: 5px solid var(--green);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+}
+
+.alert-header {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.alert-termos {
+  font-weight: 700;
+  color: var(--green);
+  font-size: 16px;
+}
+
+.alert-trecho {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.alert-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.alert-link:hover {
+  text-decoration: underline;
+}
+
+.btn-pdf {
+  margin-top: 14px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-pdf:hover {
+  background: var(--green-dark);
+}
